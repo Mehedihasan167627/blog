@@ -37,7 +37,7 @@ class Category(BaseEntity):
     
     def save(self,*args,**kwargs):
         if not self.slug:
-            self.slug=slugify(self.title)+"-"+str(random.randint(11111,9999999999))
+            self.slug=slugify(self.name)+"-"+str(random.randint(11111,9999999999))
 
         return super().save(*args,**kwargs)
     @property
