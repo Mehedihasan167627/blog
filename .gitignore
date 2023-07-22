@@ -1,3 +1,17 @@
 db.sqlite3
 venv
 media
+core/__pycache__
+
+
+blogs/__pycache__
+blogs/migrations/__pycache__
+
+
+portfolio/__pycache__
+portfolio/migrations/__pycache__
+
+
+
+users/__pycache__
+users/migrations/__pycache__
