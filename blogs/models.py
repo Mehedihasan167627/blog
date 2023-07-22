@@ -24,7 +24,7 @@ class Category(BaseEntity):
     )) 
     ordering=models.PositiveBigIntegerField() 
    
-    slug=models.SlugField() 
+    slug=models.SlugField(blank=True,null=True) 
     home_page_items=models.PositiveBigIntegerField(default=5) 
     is_home_page_show=models.BooleanField(default=True)
     ordering=models.PositiveBigIntegerField(default=0) 

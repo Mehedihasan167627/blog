@@ -23,6 +23,7 @@ class CategoryAdmin(admin.ModelAdmin):
         "home_page_items",
         "ordering",
         "status",
+        "slug",
         ]
     list_editable=[
         "show_case_type",
@@ -30,6 +31,7 @@ class CategoryAdmin(admin.ModelAdmin):
        "home_page_items",
         "status",
     ]
+    exclude=("slug",)
     
 
 admin.site.register([Comment,ReplyComment])
