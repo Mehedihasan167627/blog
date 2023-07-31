@@ -21,7 +21,6 @@ class CategoryAdmin(admin.ModelAdmin):
         "show_case_type",
         "ordering",
         "home_page_items",
-        "ordering",
         "status",
         "slug",
         ]
