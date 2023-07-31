@@ -23,7 +23,7 @@ class PortfolioAdmin(admin.ModelAdmin):
 @admin.register(MySkill)
 class MyskillAdmin(admin.ModelAdmin):
     list_display=[
-        "tech_name",
+        "teck_name",
         "perchange",
         "description",
         "image",
