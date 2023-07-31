@@ -25,7 +25,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model=Category
         fields=[
-            "id","name","slug","post_count","created_at",
+            "id","show_case_type","name","slug","post_count","created_at",
         ]
 
 
@@ -39,7 +39,7 @@ class HomeCategorySerializer(serializers.ModelSerializer):
         ]
 
     def get_posts(self,obj):
-        post=Post.objects.filter(category=obj,status=True).order_by("-id")[:obj.home_page_items]
+        post=Post.objects.filter(category=obj,status=True,is_hero=False).order_by("-id")[:obj.home_page_items]
         return PostSerializer(post,many=True).data 
     
 
@@ -50,6 +50,7 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Comment
         fields=[
+            "id",
              "commented_by",
             "content",
             "likes_count",
@@ -68,6 +69,7 @@ class CommentReplySerializer(serializers.ModelSerializer):
     class Meta:
         model=ReplyComment
         fields=[
+            "id",
             "replied_by",
             "comment",
             "content",

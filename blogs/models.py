@@ -22,8 +22,6 @@ class Category(BaseEntity):
         ("Row Single Grid","Row Single Grid"),
         ("Top One Big Bottom 3 Column","Top One Big Bottom 3 Column")
     )) 
-    ordering=models.PositiveBigIntegerField() 
-   
     slug=models.SlugField(blank=True,null=True) 
     home_page_items=models.PositiveBigIntegerField(default=5) 
     is_home_page_show=models.BooleanField(default=True)
@@ -60,12 +58,12 @@ class Post(BaseEntity):
     tags=TaggableManager()
     slug=models.SlugField(blank=True,null=True)
     is_hero=models.BooleanField(default=False) 
-   
+    hero_ordering=models.PositiveBigIntegerField(default=0)
     view_count=models.PositiveBigIntegerField(default=0) 
     is_popular=models.BooleanField(default=False)
     status=models.BooleanField(default=True)
     posted_by=models.ForeignKey(User,on_delete=models.CASCADE) 
-
+    
 
 
 
