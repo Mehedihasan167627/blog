@@ -11,7 +11,6 @@ class BaseEntity(models.Model):
         abstract=True
 
 class Information(BaseEntity):
-    author=models.OneToOneField(User,on_delete=models.CASCADE) 
     icon_image=models.ImageField(upload_to="media")
     icon_name=models.CharField(max_length=255)
     top_heading=models.CharField(max_length=255,blank=True,null=True)
@@ -27,7 +26,6 @@ class MySkill(BaseEntity):
 
 
 class Portfolio(BaseEntity):
-    author=models.ForeignKey(User,on_delete=models.CASCADE) 
     project_name=models.CharField(max_length=1000)
     thumbnail=models.ImageField(upload_to="media")
     short_description=RichTextUploadingField()

@@ -8,7 +8,7 @@ from .models import*
 
 class HomeAPIView(APIView):
     def get(self,request):
-        info_qs=Information.objects.filter(is_superuser=True).last()
+        info_qs=Information.objects.last()
         information_data=InformationSerializer(info_qs,many=False).data
 
         portfolio=Portfolio.objects.all().order_by("-id")
