@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User 
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.db.models import Q 
 
 class BaseEntity(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
@@ -35,5 +36,23 @@ class Portfolio(BaseEntity):
 
     def __str__(self) -> str:
         return self.project_name
+
+
+
+
+class Chat(BaseEntity):
+    sender=models.ForeignKey(User,on_delete=models.CASCADE,related_name="sender")
+    message=models.TextField(max_length=500) 
+    document=models.FileField(upload_to="media/docs/",blank=True,null=True)
+    receiver=models.ForeignKey(User,on_delete=models.CASCADE,related_name="receiver") 
+
+
+    def __str__(self) -> str:
+        return self.message
+    
+
+    @staticmethod
+    def get_messages(sender,receiver):
+        return Chat.objects.filter(Q(sender=sender,receiver=receiver) | Q(sender=receiver,receiver=sender))
 
 

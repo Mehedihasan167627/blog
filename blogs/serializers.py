@@ -6,9 +6,15 @@ class SidebarCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Category
-        fields=["name","post_count","name"
-                ,"show_case_type","created_at",
-]
+        fields=[
+            "id",
+            "name",
+            "show_case_type",
+            "slug",
+            "home_page_items",
+            "is_home_page_show",
+            "ordering",
+        ]
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -24,9 +30,7 @@ class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model=Category
-        fields=[
-            "id","show_case_type","name","slug","post_count","created_at",
-        ]
+        fields="__all__"
 
 
 
@@ -35,7 +39,13 @@ class HomeCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model=Category
         fields=[
-            "id","name","slug","posts","created_at",
+            "id",
+            "name",
+            "show_case_type",
+            "slug",
+            "home_page_items",
+            "is_home_page_show",
+            "ordering",
         ]
 
     def get_posts(self,obj):

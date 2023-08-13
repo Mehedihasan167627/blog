@@ -28,3 +28,5 @@ class MyskillAdmin(admin.ModelAdmin):
         "description",
         "image",
     ]
+
+admin.site.register(Chat)

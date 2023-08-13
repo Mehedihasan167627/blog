@@ -52,7 +52,7 @@ class HomeAPIView(views.APIView):
     def get(self,request):
         qs=Category.objects.filter(is_home_page_show=True).order_by("ordering")
         serializer=HomeCategorySerializer(qs,many=True)  
-        is_heros=Post.objects.filter(is_hero=False)
+        is_heros=Post.objects.filter(is_hero=True)
         hero_serializer=PostSerializer(is_heros,many=True)
         return response.Response({"data":serializer.data,"is_hero":hero_serializer.data},status=status.HTTP_200_OK)
        
